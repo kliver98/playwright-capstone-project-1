@@ -6,7 +6,7 @@ export interface EnvironmentConfig {
 }
 
 export const config: EnvironmentConfig = {
-  baseUrl: process.env.BASE_URL || 'https://automationexercise.com',
+  baseUrl: process.env.BASE_URL || 'https://www.saucedemo.com',
   apiTimeout: 30000,
   actionTimeout: 15000,
   navigationTimeout: 30000,

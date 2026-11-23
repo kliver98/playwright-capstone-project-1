@@ -1,6 +1,6 @@
 # playwright-capstone-project-1
 
-End-to-end test automation framework built with [Playwright](https://playwright.dev/) and TypeScript for the [Automation Exercise](https://automationexercise.com/) web application.
+End-to-end test automation framework built with [Playwright](https://playwright.dev/) and TypeScript for the [Swag Labs (SauceDemo)](https://www.saucedemo.com/) web application. The other https://automationexercise.com/  has CLoudfare protection that blocks the automated test execution.
 
 ---
 
@@ -15,13 +15,14 @@ The framework follows standard industry test automation design patterns, organiz
 │   └── test.fixture.ts
 ├── pages/              # Page Object Model (POM) classes and base abstractions
 │   ├── base.page.ts
-│   └── home.page.ts
+│   ├── login.page.ts
+│   └── inventory.page.ts
 ├── reports/            # Test execution artifacts, HTML reports, and traces
 │   └── .gitkeep
 ├── testdata/           # Externalized data for Data-Driven Testing (JSON/TS)
-│   └── home.data.json
+│   └── login.data.json
 ├── tests/              # Test specifications and suites
-│   └── home.spec.ts
+│   └── login.spec.ts
 ├── utils/              # Reusable browser, element, and assertion utility helpers
 │   └── web.utils.ts
 ├── playwright.config.ts # Global Playwright test runner configuration
@@ -34,12 +35,13 @@ The framework follows standard industry test automation design patterns, organiz
 
 ## Core Framework Features
 
-- **Page Object Model (POM)**: UI elements and user interactions are encapsulated within reusable page classes extending `BasePage`.
-- **Custom Fixtures**: Encapsulates page instantiation and setup via extended Playwright test fixtures.
-- **Data-Driven Testing (DDT)**: Decouples test data from test logic using externalized JSON files.
+- **Page Object Model (POM)**: UI elements and user interactions are encapsulated within reusable page classes (`LoginPage`, `InventoryPage`) extending `BasePage`.
+- **Custom Fixtures**: Provides fixture-injected page instances (`loginPage`, `inventoryPage`) extending Playwright's test base.
+- **Data-Driven Testing (DDT)**: Decouples credentials, assertions, and test scenarios from test logic via externalized JSON data (`testdata/login.data.json`).
 - **Configuration Management**: Centralizes application URLs, API timeouts, and browser execution parameters in `config/environment.ts`.
 - **Reusable Utilities**: Common actions, synchronization helpers, and element handlers located in `utils/web.utils.ts`.
 - **Cross-Browser Execution**: Preconfigured for Desktop Chromium, Firefox, and WebKit (Safari).
+- **Sequential Execution**: Tests run sequentially (`workers: 1`, `fullyParallel: false`) to ensure deterministic test runs.
 - **Comprehensive Reporting**: Generates HTML reports, failure screenshots, failure videos, and detailed trace recordings for debugging.
 
 ---
@@ -73,9 +75,14 @@ The framework follows standard industry test automation design patterns, organiz
 
 ## Test Execution
 
-### Run all tests across all browsers (headless)
+### Run tests across all configured browsers
 ```bash
 npm test
+```
+
+### Run explicitly with 1 worker (sequential)
+```bash
+npm run test:serial
 ```
 
 ### Run on a specific browser
@@ -100,7 +107,7 @@ npm run test:ui
 ## Test Reports & Debugging
 
 ### View HTML Report
-After running tests, generate and open the HTML report:
+After running tests, open the generated HTML report:
 ```bash
 npm run report
 ```
