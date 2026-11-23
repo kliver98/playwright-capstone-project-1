@@ -1,0 +1,8 @@
+{
+  "customer": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "postalCode": "90210"
+  },
+  "expectedConfirmation": "Thank you for your order!"
+}

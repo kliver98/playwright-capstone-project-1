@@ -1,0 +1,19 @@
+{
+  "validUser": {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "expectedPageTitle": "Swag Labs",
+    "expectedHeaderTitle": "Products",
+    "expectedUrl": "/inventory.html"
+  },
+  "lockedOutUser": {
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "expectedErrorMessage": "Epic sadface: Sorry, this user has been locked out."
+  },
+  "invalidUser": {
+    "username": "standard_user",
+    "password": "invalid_password_123",
+    "expectedErrorMessage": "Epic sadface: Username and password do not match any user in this service"
+  }
+}

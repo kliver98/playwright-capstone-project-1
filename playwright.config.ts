@@ -12,6 +12,12 @@ export default defineConfig({
     ['html', { outputFolder: 'reports/html-report', open: 'never' }],
     ['list']
   ],
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixelRatio: 0.05,
+      animations: 'disabled',
+    },
+  },
   use: {
     baseURL: config.baseUrl,
     actionTimeout: config.actionTimeout,
