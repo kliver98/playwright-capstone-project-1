@@ -1,0 +1,27 @@
+{
+  "name": "playwright-capstone-project-1",
+  "version": "1.0.0",
+  "description": "Playwright project to automate tests in a web page",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kliver98/playwright-capstone-project-1.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kliver98/playwright-capstone-project-1/issues"
+  },
+  "homepage": "https://github.com/kliver98/playwright-capstone-project-1#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
