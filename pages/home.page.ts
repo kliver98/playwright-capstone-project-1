@@ -1,24 +1,18 @@
 import { Page, Locator } from '@playwright/test';
+import { BasePage } from './base.page';
 
-export class HomePage {
-  readonly page: Page;
+export class HomePage extends BasePage {
   readonly headerLogo: Locator;
   readonly homeNavButton: Locator;
   readonly featuresItemsHeading: Locator;
+  readonly contactUsLink: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.headerLogo = page.locator('.logo img');
     this.homeNavButton = page.locator('.nav.navbar-nav a', { hasText: 'Home' });
     this.featuresItemsHeading = page.locator('.features_items .title');
-  }
-
-  async navigate(path: string = '/'): Promise<void> {
-    await this.page.goto(path);
-  }
-
-  async getPageTitle(): Promise<string> {
-    return this.page.title();
+    this.contactUsLink = page.locator('a[href="/contact_us"]');
   }
 
   async isLogoVisible(): Promise<boolean> {

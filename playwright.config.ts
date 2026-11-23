@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { config } from './config/environment';
 
 export default defineConfig({
   testDir: './tests',
@@ -6,12 +7,15 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  outputDir: './reports/test-results',
   reporter: [
-    ['html', { open: 'never' }],
+    ['html', { outputFolder: 'reports/html-report', open: 'never' }],
     ['list']
   ],
   use: {
-    baseURL: 'https://automationexercise.com',
+    baseURL: config.baseUrl,
+    actionTimeout: config.actionTimeout,
+    navigationTimeout: config.navigationTimeout,
     trace: 'on',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
