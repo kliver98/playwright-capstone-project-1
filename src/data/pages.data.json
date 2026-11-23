@@ -1,0 +1,12 @@
+[
+  {
+    "path": "/",
+    "expectedTitle": "Automation Exercise",
+    "description": "default root home page"
+  },
+  {
+    "path": "/#",
+    "expectedTitle": "Automation Exercise",
+    "description": "home page with hash route"
+  }
+]
